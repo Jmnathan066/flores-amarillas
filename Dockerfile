@@ -36,10 +36,8 @@ RUN composer install \
 
 COPY --from=frontend /app/public/build ./public/build
 
-RUN php artisan optimize
-
 RUN chmod -R 775 storage bootstrap/cache
 
 EXPOSE 10000
 
-CMD php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
+CMD php artisan optimize:clear && php artisan config:cache && php artisan serve --host=0.0.0.0 --port=${PORT:-10000}
