@@ -1,0 +1,1239 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #101827 0%,
+            #03050a 45%,
+            #000 100%
+        );
+}
+
+
+/* =========================
+   ESTRELLAS DEL ESPACIO
+   ========================= */
+.stars {
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: white;
+
+    pointer-events: none;
+
+    animation: starTwinkle var(--twinkle-duration) ease-in-out infinite;
+    animation-delay: var(--twinkle-delay);
+}
+
+@keyframes starTwinkle {
+    0%,
+    100% {
+        opacity: var(--star-opacity);
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.2;
+        transform: scale(0.6);
+    }
+}
+
+/* =========================
+   PLANETA TIERRA
+   ========================= */
+
+.earth {
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    right: -190px;
+    bottom: -190px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #74d7ff 0%,
+            #238fd1 28%,
+            #07559c 55%,
+            #022d5c 75%,
+            #010b18 100%
+        );
+
+    box-shadow:
+        0 0 35px rgba(80, 180, 255, .45),
+        0 0 100px rgba(30, 120, 220, .25);
+
+    overflow: hidden;
+
+    opacity: .95;
+
+    z-index: 1;
+}
+
+
+/* =========================
+   CONTINENTES
+   ========================= */
+
+.continent {
+    position: absolute;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3f8f45,
+            #79ad4d,
+            #316c3a
+        );
+
+    filter: blur(1px);
+
+    opacity: .9;
+
+    border-radius: 45% 55% 40% 60%;
+}
+
+
+/* Continente 1 */
+
+.continent-1 {
+    width: 150px;
+    height: 90px;
+
+    top: 90px;
+    left: 100px;
+
+    transform:
+        rotate(-25deg)
+        skewX(-10deg);
+}
+
+
+/* Continente 2 */
+
+.continent-2 {
+    width: 95px;
+    height: 145px;
+
+    top: 175px;
+    left: 205px;
+
+    transform:
+        rotate(20deg)
+        skewY(-10deg);
+}
+
+
+/* Continente 3 */
+
+.continent-3 {
+    width: 130px;
+    height: 75px;
+
+    top: 300px;
+    left: 70px;
+
+    transform:
+        rotate(15deg);
+}
+
+
+/* Continente 4 */
+
+.continent-4 {
+    width: 80px;
+    height: 55px;
+
+    top: 70px;
+    left: 290px;
+
+    transform:
+        rotate(-35deg);
+}
+
+/* =========================
+   ESTRELLAS FUGACES
+   ========================= */
+
+.shooting-star {
+    position: absolute;
+
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.35),
+        white
+    );
+
+    filter: drop-shadow(0 0 5px white);
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    animation-name: shooting;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+
+/* =========================
+   ESTRELLA ESPECIAL
+   ========================= */
+
+.special-star {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 5px white,
+        0 0 15px white,
+        0 0 30px rgba(255,255,255,.8),
+        0 0 50px rgba(150,200,255,.5);
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    animation: specialGlow 4s ease-in-out forwards;
+}
+
+/* =========================
+   PLANETAS DEL ESPACIO
+   ========================= */
+
+.planet {
+    position: absolute;
+
+    border-radius: 50%;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* Planeta rojo */
+
+.planet-red {
+    width: 95px;
+    height: 95px;
+
+    top: 12%;
+    left: 10%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ff9b6b,
+            #b74332 50%,
+            #451713 100%
+        );
+
+    box-shadow:
+        0 0 25px rgba(255, 90, 60, .25);
+}
+
+
+/* Planeta morado */
+
+.planet-purple {
+    width: 55px;
+    height: 55px;
+
+    top: 24%;
+    right: 25%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #d39cff,
+            #713ca0 55%,
+            #21102f
+        );
+
+    box-shadow:
+        0 0 20px rgba(160, 90, 255, .25);
+}
+
+
+/* Planeta naranja */
+
+.planet-orange {
+    width: 140px;
+    height: 140px;
+
+    bottom: 18%;
+    left: 13%;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #ffd08a,
+            #d87825 45%,
+            #71330f 100%
+        );
+
+    box-shadow:
+        0 0 30px rgba(255, 150, 50, .25);
+}
+
+
+/* Planeta con anillos */
+
+.planet-ringed {
+    width: 105px;
+    height: 105px;
+
+    top: 8%;
+    right: 12%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #d9c79c,
+            #8f7950 55%,
+            #3c3020 100%
+        );
+
+    box-shadow:
+        0 0 25px rgba(210, 190, 140, .2);
+}
+
+
+/* Anillos */
+
+.planet-ring {
+    position: absolute;
+
+    width: 180px;
+    height: 45px;
+
+    top: 30px;
+    left: -38px;
+
+    border: 8px solid rgba(190, 175, 140, .45);
+
+    border-radius: 50%;
+
+    transform: rotate(-15deg);
+}
+
+
+/* Planeta oscuro */
+
+.planet-dark {
+    width: 40px;
+    height: 40px;
+
+    top: 55%;
+    left: 38%;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #777,
+            #292929 55%,
+            #050505
+        );
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,.08);
+}
+
+
+/* =========================
+   INTRO
+   ========================= */
+
+.intro {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 35px;
+}
+
+.intro-text {
+    font-size: clamp(1.4rem, 3vw, 2.5rem);
+
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    animation: fadeIn 3s ease forwards;
+}
+
+#start-btn {
+    padding: 14px 35px;
+
+    border: 1px solid rgba(255,255,255,.5);
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,.05);
+
+    color: white;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    animation:
+        fadeIn 3s ease 1.5s forwards;
+
+    transition: .3s ease;
+}
+
+#start-btn:hover {
+    background: rgba(255,255,255,.15);
+
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   ANIMACIONES
+   ========================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes starsMove {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(120px);
+    }
+}
+
+
+@keyframes shooting {
+    0% {
+        opacity: 0;
+        transform:
+            translate(0, 0)
+            rotate(25deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-350px, 350px)
+            rotate(25deg);
+    }
+}
+
+
+@keyframes specialGlow {
+    0% {
+        opacity: 0;
+
+        transform: scale(.5);
+    }
+
+    25% {
+        opacity: 1;
+
+        transform: scale(1.6);
+    }
+
+    50% {
+        opacity: .5;
+
+        transform: scale(1);
+    }
+
+    75% {
+        opacity: 1;
+
+        transform: scale(1.4);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform: scale(.5);
+    }
+}
+
+/* =========================
+   NAVE ESPACIAL
+   ========================= */
+
+.spaceship {
+    position: absolute;
+
+    width: 180px;
+    height: 220px;
+
+    left: 50%;
+    bottom: 25%;
+
+    transform: translateX(-50%);
+
+    z-index: 6;
+
+    opacity: 0;
+}
+
+
+/* =========================
+   CUERPO
+   ========================= */
+
+.ship-body {
+    position: absolute;
+
+    width: 150px;
+    height: 105px;
+
+    left: 15px;
+    top: 35px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #e9edf2,
+            #9ca8b5
+        );
+
+    border-radius: 48% 48% 35% 35%;
+
+    border: 2px solid rgba(255,255,255,.5);
+
+    box-shadow:
+        inset 0 -12px 20px rgba(0,0,0,.2),
+        0 0 25px rgba(180,220,255,.25);
+}
+
+
+/* =========================
+   CABINA
+   ========================= */
+
+.cockpit {
+    position: absolute;
+
+    width: 85px;
+    height: 65px;
+
+    left: 32px;
+    top: -5px;
+
+    border-radius: 50% 50% 45% 45%;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            #bdeeff,
+            #347da8 55%,
+            #102d43 100%
+        );
+
+    border: 3px solid #cfd8df;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 15px rgba(90,190,255,.4);
+}
+
+/* =========================
+   NAVE ESPACIAL
+   ========================= */
+
+.spaceship {
+    position: absolute;
+
+    width: 180px;
+    height: 220px;
+
+    left: 50%;
+    bottom: -250px;
+
+    transform: translateX(-50%);
+
+    z-index: 4;
+
+    opacity: 0;
+}
+
+
+/* =========================
+   CUERPO
+   ========================= */
+
+.ship-body {
+    position: absolute;
+
+    width: 150px;
+    height: 105px;
+
+    left: 15px;
+    top: 35px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #e9edf2,
+            #9ca8b5
+        );
+
+    border-radius: 48% 48% 35% 35%;
+
+    border: 2px solid rgba(255,255,255,.5);
+
+    box-shadow:
+        inset 0 -12px 20px rgba(0,0,0,.2),
+        0 0 25px rgba(180,220,255,.25);
+}
+
+
+/* =========================
+   CABINA
+   ========================= */
+
+.cockpit {
+    position: absolute;
+
+    width: 85px;
+    height: 65px;
+
+    left: 32px;
+    top: -5px;
+
+    border-radius: 50% 50% 45% 45%;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            #bdeeff,
+            #347da8 55%,
+            #102d43 100%
+        );
+
+    border: 3px solid #cfd8df;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 15px rgba(90,190,255,.4);
+}
+
+/* =========================
+   ALAS
+   ========================= */
+
+.ship-wing {
+    position: absolute;
+
+    width: 55px;
+    height: 35px;
+
+    bottom: -12px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #b7c1ca,
+            #697681
+        );
+
+    border: 2px solid rgba(255,255,255,.25);
+}
+
+.left-wing {
+    left: -35px;
+
+    transform:
+        skewY(20deg);
+}
+
+.right-wing {
+    right: -35px;
+
+    transform:
+        skewY(-20deg);
+}
+
+
+/* =========================
+   MOTOR
+   ========================= */
+
+.engine {
+    position: absolute;
+
+    width: 70px;
+    height: 70px;
+
+    left: 55px;
+    top: 125px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+/* Llamas */
+
+.flame {
+    position: absolute;
+
+    bottom: 0;
+
+    border-radius: 50% 50% 50% 50%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff6a0,
+            #ffb52e,
+            #ff5b20
+        );
+
+    filter: blur(1px);
+
+    transform-origin: top center;
+
+    animation: flameMove .12s infinite alternate;
+}
+
+.flame-1 {
+    width: 30px;
+    height: 70px;
+}
+
+.flame-2 {
+    width: 20px;
+    height: 90px;
+
+    opacity: .8;
+}
+
+.flame-3 {
+    width: 12px;
+    height: 105px;
+
+    opacity: .6;
+}
+
+
+@keyframes flameMove {
+
+    from {
+        transform: scaleY(.8);
+    }
+
+    to {
+        transform: scaleY(1.15);
+    }
+
+}
+
+/* =========================
+   TRANSICIÓN AL DESPEGUE
+   ========================= */
+
+.blackout {
+    position: fixed;
+
+    inset: 0;
+
+    background: #000;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 20;
+
+    transition: opacity 1s ease;
+}
+
+
+/* =========================
+   ZOOM HACIA LA TIERRA
+   ========================= */
+
+.scene.zoom-earth .earth {
+    animation: earthZoom 2.5s ease-in forwards;
+}
+
+.scene.zoom-earth .stars {
+    animation: starsZoom 2.5s ease-in forwards;
+}
+
+.scene.zoom-earth .intro {
+    opacity: 0;
+
+    transition: opacity 1s ease;
+}
+
+
+@keyframes earthZoom {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(5);
+    }
+
+}
+
+
+@keyframes starsZoom {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(2.5);
+    }
+
+}
+
+
+/* =========================
+   PANTALLA NEGRA
+   ========================= */
+
+.scene.black-screen .blackout {
+    opacity: 1;
+}
+
+
+/* =========================
+   APARICIÓN DE LA NAVE
+   ========================= */
+
+.scene.launch .spaceship {
+
+    opacity: 1;
+
+    animation:
+        spaceshipAppear .8s ease-out forwards,
+        spaceshipLaunch 3.5s ease-in 1s forwards;
+
+}
+
+
+@keyframes spaceshipAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateX(-50%)
+            scale(.5);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+}
+
+@keyframes spaceshipLaunch {
+
+    0% {
+        bottom: 25%;
+
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+    20% {
+        bottom: 25.5%;
+
+        transform:
+            translateX(-50%)
+            scale(1.02)
+            rotate(-1deg);
+    }
+
+    40% {
+        bottom: 28%;
+
+        transform:
+            translateX(-50%)
+            scale(1.03)
+            rotate(1deg);
+    }
+
+    65% {
+        bottom: 35%;
+
+        transform:
+            translateX(-50%)
+            scale(1.05)
+            rotate(-2deg);
+    }
+
+    100% {
+        bottom: 65%;
+
+        transform:
+            translateX(-50%)
+            scale(1.1)
+            rotate(-3deg);
+    }
+
+}
+.scene.launch .ship-body {
+    animation: shipShake .12s infinite alternate;
+}
+
+@keyframes shipShake {
+
+    from {
+        transform: translateX(-2px);
+    }
+
+    to {
+        transform: translateX(2px);
+    }
+
+}
+
+/* =========================
+   ESCENA DEL CAMPO
+   ========================= */
+
+.field-scene {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #08111c 0%,
+            #12263a 55%,
+            #29482e 70%,
+            #142516 100%
+        );
+
+    z-index: 4;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 1.5s ease;
+}
+
+
+/* Cuando comienza la escena */
+
+.scene.field-mode .field-scene {
+    opacity: 1;
+}
+
+
+/* =========================
+   LUNA
+   ========================= */
+
+.moon {
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    top: 12%;
+    right: 15%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff,
+            #d7dce0 55%,
+            #8e969d 100%
+        );
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,.25);
+}
+
+
+/* =========================
+   CAMPO
+   ========================= */
+
+.field {
+    position: absolute;
+
+    left: -10%;
+    right: -10%;
+    bottom: -15%;
+
+    height: 55%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #3e8539 0%,
+            #27652d 40%,
+            #16431f 100%
+        );
+
+    border-radius: 50% 50% 0 0;
+
+    transform: rotate(-2deg);
+}
+
+
+/* Diferentes zonas del césped */
+
+.grass {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        repeating-linear-gradient(
+            75deg,
+            transparent 0px,
+            transparent 18px,
+            rgba(90,160,60,.15) 19px,
+            transparent 21px
+        );
+
+    opacity: .5;
+}
+
+.grass-2 {
+    transform: rotate(4deg);
+
+    opacity: .3;
+}
+
+.grass-3 {
+    transform: rotate(-7deg);
+
+    opacity: .2;
+}
+
+/* Cuando llegamos al campo, desaparece el espacio anterior */
+
+.scene.field-mode .stars,
+.scene.field-mode .earth,
+.scene.field-mode .planet {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* La escena del campo queda visible */
+.scene.field-mode .field-scene {
+    opacity: 1;
+}
+
+/* La nave aparece sobre el campo */
+.scene.field-mode .spaceship {
+    z-index: 6;
+}
+
+/* ========================================
+   BOTÓN — ESCUCHAR LA HISTORIA
+======================================== */
+
+#story-btn {
+    position: relative;
+
+    margin-top: 18px;
+    padding: 12px 24px;
+
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(8px);
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(255, 255, 255, 0.04),
+        inset 0 0 12px rgba(255, 255, 255, 0.03);
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease,
+        color 0.4s ease;
+
+    animation: storyButtonPulse 3s ease-in-out infinite;
+}
+
+
+/* BRILLO QUE PASA POR EL BOTÓN */
+
+#story-btn::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    border-radius: inherit;
+
+    background: linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.12),
+        transparent 80%
+    );
+
+    opacity: 0;
+
+    transform: translateX(-100%);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.7s ease;
+
+    pointer-events: none;
+}
+
+
+/* HOVER */
+
+#story-btn:hover {
+    transform: translateY(-2px);
+
+    background: rgba(255, 255, 255, 0.1);
+
+    border-color: rgba(255, 255, 255, 0.55);
+
+    color: white;
+
+    box-shadow:
+        0 0 20px rgba(255, 255, 255, 0.08),
+        0 0 35px rgba(180, 200, 255, 0.08);
+}
+
+#story-btn:hover::before {
+    opacity: 1;
+    transform: translateX(100%);
+}
+
+
+/* CLICK */
+
+#story-btn:active {
+    transform: translateY(0) scale(0.97);
+}
+
+
+/* PULSO MUY SUTIL */
+
+@keyframes storyButtonPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 15px rgba(255, 255, 255, 0.04);
+    }
+
+    50% {
+        box-shadow:
+            0 0 22px rgba(190, 210, 255, 0.1);
+    }
+}

@@ -1,0 +1,573 @@
+/* ========================================
+   CONFIGURACIÓN GENERAL
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #080605;
+    color: white;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* ========================================
+   ESCENA
+======================================== */
+
+.cafe-scene {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #090b18 0%,
+            #12101a 45%,
+            #1b120e 100%
+        );
+}
+
+
+/* ========================================
+   ESPACIO DEL FONDO
+======================================== */
+
+.space-background {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 75% 20%,
+            rgba(100, 110, 180, .18),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(150, 100, 180, .12),
+            transparent 30%
+        );
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   VENTANA
+======================================== */
+
+.window {
+    position: absolute;
+
+    top: 7%;
+    left: 50%;
+
+    width: min(72vw, 850px);
+    height: 52vh;
+
+    transform: translateX(-50%);
+
+    border: 12px solid #241a16;
+
+    border-radius: 18px;
+
+    background: #020308;
+
+    box-shadow:
+        0 0 0 3px rgba(255, 220, 170, .08),
+        0 20px 60px rgba(0, 0, 0, .65);
+
+    overflow: hidden;
+
+    z-index: 2;
+}
+
+
+/* ========================================
+   ESPACIO DENTRO DE LA VENTANA
+======================================== */
+
+.window-space {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #11162d 0%,
+            #050711 55%,
+            #010205 100%
+        );
+}
+
+
+/* ========================================
+   ESTRELLAS DE LA VENTANA
+======================================== */
+
+.window-stars {
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        85px 75px;
+
+    opacity: .55;
+
+    animation:
+        windowStarsMove 35s
+        linear
+        infinite;
+}
+
+@keyframes windowStarsMove {
+
+    from {
+        background-position:
+            0 0;
+    }
+
+    to {
+        background-position:
+            -120px 80px;
+    }
+}
+
+
+/* ========================================
+   LUNA / LUZ LEJANA
+======================================== */
+
+.window-space::after {
+    content: "";
+
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    right: 14%;
+    top: 20%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #fffdf2,
+            #d7d7df 55%,
+            #8e91a5 100%
+        );
+
+    box-shadow:
+        0 0 25px rgba(220, 225, 255, .25);
+
+    opacity: .8;
+}
+
+
+/* ========================================
+   HABITACIÓN
+======================================== */
+
+.cafe-room {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   LÁMPARA
+======================================== */
+
+.lamp {
+    position: absolute;
+
+    top: 0;
+    left: 12%;
+
+    width: 150px;
+    height: 120px;
+}
+
+.lamp::before {
+    content: "";
+
+    position: absolute;
+
+    left: 25px;
+    top: -20px;
+
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 210, 130, .9),
+            rgba(255, 170, 80, .35) 35%,
+            transparent 70%
+        );
+
+    filter: blur(12px);
+}
+
+.lamp-light {
+    position: absolute;
+
+    left: 45px;
+    top: 0;
+
+    width: 60px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: #d8b58a;
+
+    box-shadow:
+        0 0 25px rgba(255, 190, 100, .5);
+}
+
+
+/* ========================================
+   MESA
+======================================== */
+
+.table {
+    position: absolute;
+
+    left: 50%;
+    bottom: -5%;
+
+    width: min(70vw, 800px);
+    height: 32%;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            180deg,
+            #3a2419,
+            #21130e
+        );
+
+    border-radius:
+        35px 35px 0 0;
+
+    box-shadow:
+        0 -10px 30px rgba(0, 0, 0, .45);
+
+    z-index: 10;
+}
+
+
+/* ========================================
+   TAZA
+======================================== */
+
+.cup {
+    position: absolute;
+
+    left: 50%;
+    top: -85px;
+
+    width: 130px;
+    height: 95px;
+
+    transform: translateX(-50%);
+
+    border-radius:
+        8px 8px 35px 35px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #d6c4ad,
+            #f1e3ce 45%,
+            #b9a58e
+        );
+
+    box-shadow:
+        0 15px 25px rgba(0, 0, 0, .4);
+
+    cursor: pointer;
+
+    pointer-events: auto;
+
+    z-index: 20;
+
+    transition:
+        transform .6s ease,
+        filter .6s ease;
+}
+
+.cup:hover {
+    transform:
+        translateX(-50%)
+        translateY(-5px);
+
+    filter:
+        brightness(1.08);
+}
+
+
+/* ========================================
+   CAFÉ
+======================================== */
+
+.coffee {
+    position: absolute;
+
+    top: 8px;
+    left: 10px;
+
+    width: 110px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 45% 45%,
+            #6b4428,
+            #2b160c 70%
+        );
+
+    box-shadow:
+        inset 0 2px 4px rgba(255,255,255,.12);
+}
+
+
+/* ========================================
+   ASA DE LA TAZA
+======================================== */
+
+.cup-handle {
+    position: absolute;
+
+    right: -34px;
+    top: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    border:
+        10px solid #c8b49b;
+
+    border-left: 0;
+
+    border-radius:
+        0 50% 50% 0;
+}
+
+
+/* ========================================
+   VAPOR
+======================================== */
+
+.steam {
+    position: absolute;
+
+    bottom: 85px;
+
+    width: 3px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.0),
+            rgba(255,255,255,.3),
+            rgba(255,255,255,.0)
+        );
+
+    filter: blur(2px);
+
+    opacity: .5;
+
+    animation:
+        steamFloat 3s
+        ease-in-out
+        infinite;
+}
+
+.steam-1 {
+    left: 35px;
+}
+
+.steam-2 {
+    left: 62px;
+
+    height: 80px;
+
+    animation-delay:
+        .8s;
+}
+
+.steam-3 {
+    left: 85px;
+
+    height: 55px;
+
+    animation-delay:
+        1.5s;
+}
+
+@keyframes steamFloat {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            translateX(0)
+            scale(.8);
+    }
+
+    40% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(-35px)
+            translateX(12px)
+            scale(1.2);
+    }
+}
+
+
+/* ========================================
+   NARRACIÓN
+======================================== */
+
+.story {
+    position: absolute;
+
+    left: 50%;
+    bottom: 11%;
+
+    width: min(80vw, 700px);
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    z-index: 30;
+
+    pointer-events: none;
+}
+
+.story p {
+    font-size:
+        clamp(1.1rem, 2vw, 1.55rem);
+
+    line-height: 1.6;
+
+    letter-spacing: 1px;
+
+    color:
+        rgba(244, 234, 218, .92);
+
+    text-shadow:
+        0 2px 15px rgba(0,0,0,.8);
+
+    opacity: 0;
+}
+
+
+/* ========================================
+   BOTÓN SIGUIENTE
+======================================== */
+
+.next-button {
+    position: absolute;
+
+    right: 5%;
+    bottom: 6%;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(235, 220, 190, .4);
+
+    border-radius: 50%;
+
+    color:
+        rgba(245, 230, 205, .9);
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 1.7rem;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translateX(20px);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease,
+        background .4s ease;
+}
+
+.next-button:hover {
+    background:
+        rgba(220, 190, 150, .1);
+}
+
+.next-button.visible {
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(0);
+}

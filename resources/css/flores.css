@@ -1,0 +1,1041 @@
+/* ========================================
+   CONFIGURACIÓN
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+body {
+    background: #000;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+
+/* ========================================
+   ESCENA
+======================================== */
+
+.flowers-scene {
+
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background: #02030a;
+}
+
+
+/* ========================================
+   CIELO
+======================================== */
+
+.sky {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(50, 90, 130, .35),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            180deg,
+            #02030b 0%,
+            #07131b 55%,
+            #18342a 100%
+        );
+
+    opacity: 0;
+
+    animation:
+        sceneAppear 3s ease forwards;
+}
+
+
+/* ========================================
+   ESTRELLAS
+======================================== */
+
+.sky-star {
+
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.8);
+
+    opacity: .6;
+
+    animation:
+        starPulse 3s
+        ease-in-out
+        infinite;
+}
+
+.star-1 {
+    left: 18%;
+    top: 22%;
+}
+
+.star-2 {
+    left: 72%;
+    top: 18%;
+
+    animation-delay: .7s;
+}
+
+.star-3 {
+    left: 83%;
+    top: 35%;
+
+    animation-delay: 1.4s;
+}
+
+.star-4 {
+    left: 35%;
+    top: 15%;
+
+    animation-delay: 2s;
+}
+
+@keyframes starPulse {
+
+    0%,
+    100% {
+        opacity: .25;
+    }
+
+    50% {
+        opacity: .9;
+    }
+}
+
+
+/* ========================================
+   HORIZONTE
+======================================== */
+
+.horizon {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: 36%;
+
+    height: 30%;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(34, 73, 49, .65)
+        );
+
+    filter: blur(8px);
+
+    opacity: 0;
+
+    animation:
+        horizonAppear 3s 1s ease forwards;
+}
+
+
+/* ========================================
+   SUELO
+======================================== */
+
+.ground {
+
+    position: absolute;
+
+    left: -10%;
+    right: -10%;
+
+    bottom: -20%;
+
+    height: 58%;
+
+    border-radius:
+        50% 50% 0 0;
+
+    background:
+
+        radial-gradient(
+            ellipse at 50% 10%,
+            #416b45 0%,
+            #29472e 40%,
+            #132519 75%,
+            #07100a 100%
+        );
+
+    transform:
+        perspective(600px)
+        rotateX(8deg);
+
+    box-shadow:
+        0 -30px 70px rgba(50, 120, 70, .18);
+
+    opacity: 0;
+
+    animation:
+        groundAppear 3s 1s ease forwards;
+
+    z-index: 5;
+}
+
+
+/* ========================================
+   LUZ DEL SUELO
+======================================== */
+
+.ground-glow {
+
+    position: absolute;
+
+    left: 50%;
+    top: 8%;
+
+    width: 250px;
+    height: 100px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            ellipse,
+            rgba(130, 180, 110, .2),
+            transparent 70%
+        );
+
+    filter: blur(15px);
+}
+
+
+/* ========================================
+   ESFERA
+======================================== */
+
+.seed {
+
+    position: absolute;
+
+    left: 60%;
+
+    top: -80px;
+
+    width: 24px;
+    height: 24px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle at 35% 30%,
+            #fffbe0,
+            #f2d96b 35%,
+            #b18a22 100%
+        );
+
+    box-shadow:
+
+        0 0 10px rgba(255, 220, 100, .8),
+        0 0 30px rgba(255, 200, 70, .4);
+
+    z-index: 20;
+
+    opacity: 0;
+
+    animation:
+        seedFall 2.8s 3.5s
+        cubic-bezier(.22, .8, .35, 1)
+        forwards;
+}
+
+
+/* ========================================
+   VISOR
+======================================== */
+
+.visor-frame {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 40;
+
+    pointer-events: none;
+
+    border:
+
+        18px solid
+        rgba(5, 7, 12, .75);
+
+    box-shadow:
+
+        inset 0 0 80px
+        rgba(0, 0, 0, .8);
+
+    opacity: 0;
+
+    animation:
+        visorAppear 3s 1s ease forwards;
+}
+
+
+/* ========================================
+   REFLEJO DEL VISOR
+======================================== */
+
+.visor-reflection {
+
+    position: absolute;
+
+    top: 8%;
+    right: 12%;
+
+    width: 25%;
+    height: 18%;
+
+    border-radius: 50%;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(180, 220, 255, .08),
+            transparent
+        );
+
+    transform:
+        rotate(-25deg);
+
+    filter: blur(3px);
+}
+
+
+/* ========================================
+   TEXTO
+======================================== */
+
+.intro-text {
+
+    position: absolute;
+
+    left: 62%;
+    bottom: 10%;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 50;
+
+    color:
+        rgba(240, 240, 235, .9);
+
+    font-size:
+        clamp(1.1rem, 2vw, 1.5rem);
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 2px 15px rgba(0,0,0,.8);
+
+    opacity: 0;
+
+    animation:
+        textAppear 2s 4s ease forwards;
+}
+
+
+/* ========================================
+   ANIMACIONES
+======================================== */
+
+@keyframes sceneAppear {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes horizonAppear {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes groundAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            perspective(600px)
+            rotateX(8deg)
+            scale(1.08);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            perspective(600px)
+            rotateX(8deg)
+            scale(1);
+    }
+}
+
+@keyframes visorAppear {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes textAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateX(-50%)
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+}
+
+
+/* ========================================
+   CAÍDA DE LA ESFERA
+======================================== */
+
+@keyframes seedFall {
+
+    0% {
+
+        opacity: 0;
+
+        top: -80px;
+
+        transform:
+            translateX(-50%)
+            scale(.7);
+    }
+
+    15% {
+
+        opacity: 1;
+    }
+
+    85% {
+
+        opacity: 1;
+
+        top: 66%;
+    }
+
+    100% {
+
+        opacity: 1;
+
+        top: 66%;
+
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+}
+
+/* ========================================
+   ÁRBOL
+======================================== */
+
+.tree {
+
+    position: absolute;
+
+    left: 60%;
+    bottom: 25%;
+
+    width: 260px;
+    height: 330px;
+
+    transform:
+        translateX(-50%)
+        scaleY(0);
+
+    transform-origin:
+        bottom center;
+
+    opacity: 0;
+
+    z-index: 15;
+}
+
+
+/* ========================================
+   TRONCO
+======================================== */
+
+.trunk {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 13px;
+    height: 230px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        50% 50% 20% 20%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #24160f,
+            #65452b 45%,
+            #2b1a10
+        );
+
+    box-shadow:
+        3px 0 8px rgba(0,0,0,.35);
+}
+
+
+/* ========================================
+   RAMAS
+======================================== */
+/* ========================================
+   RAMAS
+======================================== */
+.branch {
+    position: absolute;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #24160f, #65452b);
+}
+
+/* RAMAS IZQUIERDA */
+.branch-1,
+.branch-3,
+.branch-5 {
+    right: 50%;
+    left: auto;
+    transform-origin: right center;
+}
+
+/* RAMAS DERECHA */
+.branch-2,
+.branch-4,
+.branch-6 {
+    left: 50%;
+    right: auto;
+    transform-origin: left center;
+}
+
+/* Izquierda */
+.branch-1 {
+    bottom: 58px;
+    width: 105px;
+    transform: rotate(38deg);
+}
+
+.branch-3 {
+    bottom: 120px;
+    width: 100px;
+    transform: rotate(42deg);
+}
+
+.branch-5 {
+    bottom: 175px;
+    width: 82px;
+    transform: rotate(48deg);
+}
+
+/* Derecha */
+.branch-2 {
+    bottom: 82px;
+    width: 105px;
+    transform: rotate(-38deg);
+}
+
+.branch-4 {
+    bottom: 145px;
+    width: 100px;
+    transform: rotate(-42deg);
+}
+
+.branch-6 {
+    bottom: 195px;
+    width: 82px;
+    transform: rotate(-48deg);
+}
+
+/* RAMITAS FINAS */
+.branch::after {
+    content: "";
+    position: absolute;
+    width: 45px;
+    height: 3px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #2c1a11, #5a3b25);
+}
+
+/* Ramitas de la izquierda */
+.branch-1::after {
+    right: 15px;
+    top: -10px;
+    transform: rotate(-35deg);
+}
+
+.branch-3::after {
+    right: 20px;
+    top: -9px;
+    transform: rotate(-40deg);
+}
+
+.branch-5::after {
+    right: 8px;
+    top: -8px;
+    transform: rotate(-45deg);
+}
+
+/* Ramitas de la derecha */
+.branch-2::after {
+    left: 15px;
+    top: -10px;
+    transform: rotate(35deg);
+}
+
+.branch-4::after {
+    left: 20px;
+    top: -9px;
+    transform: rotate(40deg);
+}
+
+.branch-6::after {
+    left: 8px;
+    top: -8px;
+    transform: rotate(45deg);
+}
+/* ========================================
+   IMPACTO DE LA SEMILLA
+======================================== */
+
+.seed-impact {
+
+    position: absolute;
+
+    left: 60%;
+    top: 66%;
+
+    width: 30px;
+    height: 30px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.2);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255,240,160,.9),
+            rgba(255,210,80,.4),
+            transparent 70%
+        );
+
+    opacity: 0;
+
+    z-index: 19;
+}
+
+
+/* ========================================
+   CRECIMIENTO DEL ÁRBOL
+======================================== */
+
+.tree.growing {
+
+    animation:
+        treeGrow 3s
+        cubic-bezier(.22, 1, .36, 1)
+        forwards;
+}
+
+@keyframes treeGrow {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            scaleY(0);
+    }
+
+    15% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            scaleY(1);
+    }
+}
+
+
+/* ========================================
+   DESTELLO
+======================================== */
+
+.seed-impact.active {
+
+    animation:
+        seedImpact .8s
+        ease-out
+        forwards;
+}
+
+@keyframes seedImpact {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.2);
+    }
+
+    30% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(3);
+    }
+}
+
+.seed.hidden {
+    display: none;
+}
+
+/* =========================================
+   FLORES
+========================================= */
+/* =========================================
+   FLORES
+========================================= */
+
+.flowers-container {
+    position: absolute;
+    inset: 0;
+    z-index: 17;
+    pointer-events: none;
+    transform: translateX(10%);
+}
+
+.flower {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+/* Centro */
+.flower::before {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #d99b18;
+    z-index: 2;
+}
+
+/* Pétalos */
+.flower::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 50% 0%, #ffe66d 0 45%, transparent 47%),
+        radial-gradient(circle at 100% 38%, #ffd94f 0 45%, transparent 47%),
+        radial-gradient(circle at 78% 100%, #ffe66d 0 45%, transparent 47%),
+        radial-gradient(circle at 22% 100%, #ffd94f 0 45%, transparent 47%),
+        radial-gradient(circle at 0% 38%, #ffe66d 0 45%, transparent 47%);
+}
+
+.flower.visible {
+    animation: flowerBloom 0.45s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+@keyframes flowerBloom {
+
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.25);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* =========================================
+   PÉTALOS VOLANDO
+========================================= */
+
+.floating-petals {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 25;
+}
+
+.floating-petal {
+    position: absolute;
+
+    background: #ffe05a;
+
+    border-radius: 50% 50% 50% 0;
+
+    opacity: 0;
+
+    z-index: 26;
+
+    animation:
+        petalFloat var(--duration) linear forwards;
+}
+
+@keyframes petalFloat {
+
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    10% {
+        opacity: 0.9;
+    }
+
+    50% {
+        opacity: 0.75;
+    }
+
+    85% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate3d(
+                var(--drift-x),
+                var(--drift-y),
+                0
+            )
+            rotate(var(--rotation));
+    }
+}
+
+/* =========================================
+   CARTA
+========================================= */
+
+.letter {
+    position: absolute;
+    left: 7%;
+    top: 24%;
+    width: 34%;
+    max-width: 430px;
+
+    z-index: 30;
+
+    opacity: 0;
+
+    color: rgba(255, 248, 220, 0.92);
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+
+    text-align: left;
+
+    transition: opacity 1.5s ease;
+}
+
+.letter.visible {
+    opacity: 1;
+}
+
+#letter-text {
+    margin: 0;
+}
+
+/* =========================================
+   CONTADOR
+========================================= */
+
+.love-counter {
+    position: absolute;
+    left: 7%;
+    top: 67%;
+
+    width: 38%;
+    max-width: 470px;
+
+    z-index: 30;
+
+    opacity: 0;
+
+    text-align: center;
+
+    color: rgba(255, 248, 220, 0.9);
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    transition: opacity 1.5s ease;
+}
+
+.love-counter.visible {
+    opacity: 1;
+}
+
+.counter-title {
+    display: block;
+
+    margin-bottom: 18px;
+
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+
+    opacity: 0.8;
+}
+
+.counter-time {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.counter-time span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.counter-time strong {
+    font-size: 1.55rem;
+    font-weight: 400;
+}
+
+.counter-time small {
+    margin-top: 3px;
+
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+
+    opacity: 0.65;
+}
+
+.counter-ending {
+    display: block;
+
+    margin-top: 16px;
+
+    font-size: 0.85rem;
+    font-style: italic;
+
+    opacity: 0.65;
+}
