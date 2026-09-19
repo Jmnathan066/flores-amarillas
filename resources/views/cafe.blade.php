@@ -18,7 +18,7 @@
 
         <audio id="music-cafe" preload="auto" loop>
     <source
-        src="/build/assets/audio/cafe-music.mp3"
+        src="/audio/cafe-music.mp3"
         type="audio/mpeg"
     >
 </audio>
@@ -26,7 +26,7 @@
 
 <audio id="story-cafe" preload="auto">
     <source
-        src="/build/assets/audio/voz-cafe.mpeg"
+        src="/audio/voz-cafe.mpeg"
         type="audio/mpeg"
     >
 </audio>

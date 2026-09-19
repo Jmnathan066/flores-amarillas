@@ -18,14 +18,14 @@
 
         <audio id="music-universo" preload="auto" loop>
     <source
-        src="/build/assets/audio/universo-music.mp3"
+        src="/audio/universo-music.mp3"
         type="audio/mpeg"
     >
 </audio>
 
 <audio id="story-universo" preload="auto">
     <source
-        src="/build/assets/audio/voz-universo.mpeg"
+        src="/audio/voz-universo.mpeg"
         type="audio/mpeg"
     >
 </audio>

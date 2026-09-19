@@ -25,7 +25,7 @@
 
         <audio id="music-flores" preload="auto" loop>
     <source
-        src="/build/assets/audio/flores-music.mp3"
+        src="/audio/flores-music.mp3"
         type="audio/mpeg"
     >
 </audio>
@@ -33,7 +33,7 @@
 
 <audio id="story-flores" preload="auto">
     <source
-        src="/build/assets/audio/voz-flores.mpeg"
+        src="/audio/voz-flores.mpeg"
         type="audio/mpeg"
     >
 </audio>

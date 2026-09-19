@@ -119,11 +119,11 @@
 </section>
 
 <audio id="music-tierra" preload="auto" loop>
-    <source src="/build/assets/audio/tierra-music.mp3" type="audio/mpeg">
+    <source src="/audio/tierra-music.mp3" type="audio/mpeg">
 </audio>
 
 <audio id="story-tierra" preload="auto">
-    <source src="/build/assets/audio/voz-tierra.mpeg" type="audio/mpeg">
+    <source src="/audio/voz-tierra.mpeg" type="audio/mpeg">
 </audio>
 
 

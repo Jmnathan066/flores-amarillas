@@ -24,14 +24,14 @@
 
         <audio id="music-viaje" preload="auto" loop>
     <source
-        src="/build/assets/audio/viaje-music.mp3"
+        src="/audio/viaje-music.mp3"
         type="audio/mpeg"
     >
 </audio>
 
 <audio id="story-viaje" preload="auto">
     <source
-        src="/build/assets/audio/voz-viaje.mpeg"
+        src="/audio/voz-viaje.mpeg"
         type="audio/mpeg"
     >
 </audio>
